@@ -25,7 +25,7 @@ import org.apache.mahout.math.Vector;
 public interface VectorWriter extends Closeable {
   /**
    * Write all values in the Iterable to the output
-   * @param iterable The {@link Iterable} to loop over
+   * @param iterable The {@link Iterable} to LOOP over
    * @return the number of docs written
    * @throws IOException if there was a problem writing
    *
@@ -42,7 +42,7 @@ public interface VectorWriter extends Closeable {
   
   /**
    * Write the first {@code maxDocs} to the output.
-   * @param iterable The {@link Iterable} to loop over
+   * @param iterable The {@link Iterable} to LOOP over
    * @param maxDocs the maximum number of docs to write
    * @return The number of docs written
    * @throws IOException if there was a problem writing

@@ -111,7 +111,7 @@ public abstract class AbstractLuceneIterator extends AbstractIterator<Vector> {
         }
       } while (termFreqVector == null);
 
-      // The loop exits with termFreqVector and name set.
+      // The LOOP exits with termFreqVector and name set.
 
       TermsEnum te = termFreqVector.iterator();
       BytesRef term;

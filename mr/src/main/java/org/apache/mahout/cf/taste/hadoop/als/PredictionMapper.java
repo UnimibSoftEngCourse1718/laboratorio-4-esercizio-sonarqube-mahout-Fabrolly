@@ -60,10 +60,10 @@ public class PredictionMapper extends SharingMapper<IntWritable,VectorWritable,L
     Path pathToU = new Path(conf.get(RecommenderJob.USER_FEATURES_PATH));
     Path pathToM = new Path(conf.get(RecommenderJob.ITEM_FEATURES_PATH));
 
-    OpenIntObjectHashMap<Vector> U = ALS.readMatrixByRows(pathToU, conf);
-    OpenIntObjectHashMap<Vector> M = ALS.readMatrixByRows(pathToM, conf);
+    OpenIntObjectHashMap<Vector> u = ALS.readMatrixByRows(pathToU, conf);
+    OpenIntObjectHashMap<Vector> m = ALS.readMatrixByRows(pathToM, conf);
 
-    return new Pair<>(U, M);
+    return new Pair<>(u, m);
   }
 
   @Override
@@ -85,8 +85,8 @@ public class PredictionMapper extends SharingMapper<IntWritable,VectorWritable,L
     throws IOException, InterruptedException {
 
     Pair<OpenIntObjectHashMap<Vector>, OpenIntObjectHashMap<Vector>> uAndM = getSharedInstance();
-    OpenIntObjectHashMap<Vector> U = uAndM.getFirst();
-    OpenIntObjectHashMap<Vector> M = uAndM.getSecond();
+    OpenIntObjectHashMap<Vector> u = uAndM.getFirst();
+    OpenIntObjectHashMap<Vector> m = uAndM.getSecond();
 
     Vector ratings = ratingsWritable.get();
     int userIndex = userIndexWritable.get();
@@ -97,9 +97,9 @@ public class PredictionMapper extends SharingMapper<IntWritable,VectorWritable,L
     }
 
     final TopItemsQueue topItemsQueue = new TopItemsQueue(recommendationsPerUser);
-    final Vector userFeatures = U.get(userIndex);
+    final Vector userFeatures = u.get(userIndex);
 
-    M.forEachPair(new IntObjectProcedure<Vector>() {
+    m.forEachPair(new IntObjectProcedure<Vector>() {
       @Override
       public boolean apply(int itemID, Vector itemFeatures) {
         if (!alreadyRatedItems.contains(itemID)) {

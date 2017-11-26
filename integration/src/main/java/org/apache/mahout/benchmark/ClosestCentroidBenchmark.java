@@ -47,7 +47,7 @@ public class ClosestCentroidBenchmark {
 
     long distanceCalculations = 0;
     TimingStatistics stats = new TimingStatistics();
-    for (int l = 0; l < mark.loop; l++) {
+    for (int l = 0; l < mark.LOOP; l++) {
       TimingStatistics.Call call = stats.newCall(mark.leadTimeUsec);
       for (int i = 0; i < mark.numVectors; i++) {
         Vector vector = mark.vectors[1][mark.vIndex(i)];
@@ -70,7 +70,7 @@ public class ClosestCentroidBenchmark {
     distanceCalculations = 0;
     stats = new TimingStatistics();
     Random rand = RandomUtils.getRandom();
-    for (int l = 0; l < mark.loop; l++) {
+    for (int l = 0; l < mark.LOOP; l++) {
       TimingStatistics.Call call = stats.newCall(mark.leadTimeUsec);
       for (int i = 0; i < mark.numVectors; i++) {
         Vector vector = mark.vectors[1][mark.vIndex(i)];

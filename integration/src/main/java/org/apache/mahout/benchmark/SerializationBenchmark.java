@@ -58,7 +58,7 @@ public class SerializationBenchmark {
     try (SequenceFile.Writer writer =
              new SequenceFile.Writer(fs, conf, new Path("/tmp/dense-vector"),
                  IntWritable.class, VectorWritable.class)){
-      for (int i = 0; i < mark.loop; i++) {
+      for (int i = 0; i < mark.LOOP; i++) {
         TimingStatistics.Call call = stats.newCall(mark.leadTimeUsec);
         vec.set(mark.vectors[0][mark.vIndex(i)]);
         writer.append(one, vec);
@@ -73,7 +73,7 @@ public class SerializationBenchmark {
     try (SequenceFile.Writer writer =
              new SequenceFile.Writer(fs, conf,
                  new Path("/tmp/randsparse-vector"), IntWritable.class, VectorWritable.class)){
-      for (int i = 0; i < mark.loop; i++) {
+      for (int i = 0; i < mark.LOOP; i++) {
         TimingStatistics.Call call = stats.newCall(mark.leadTimeUsec);
         vec.set(mark.vectors[1][mark.vIndex(i)]);
         writer.append(one, vec);
@@ -88,7 +88,7 @@ public class SerializationBenchmark {
     try (SequenceFile.Writer writer =
              new SequenceFile.Writer(fs, conf,
                  new Path("/tmp/seqsparse-vector"), IntWritable.class, VectorWritable.class)) {
-      for (int i = 0; i < mark.loop; i++) {
+      for (int i = 0; i < mark.LOOP; i++) {
         TimingStatistics.Call call = stats.newCall(mark.leadTimeUsec);
         vec.set(mark.vectors[2][mark.vIndex(i)]);
         writer.append(one, vec);

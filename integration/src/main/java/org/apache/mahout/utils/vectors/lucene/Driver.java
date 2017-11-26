@@ -189,7 +189,7 @@ public final class Driver {
 
     Option maxOpt = obuilder.withLongName("max").withRequired(false).withArgument(
         abuilder.withName("max").withMinimum(1).withMaximum(1).create()).withDescription(
-        "The maximum number of vectors to output.  If not specified, then it will loop over all docs")
+        "The maximum number of vectors to output.  If not specified, then it will LOOP over all docs")
         .withShortName("m").create();
 
     Option minDFOpt = obuilder.withLongName("minDF").withRequired(false).withArgument(

@@ -87,7 +87,7 @@ public class VectorBenchmarks {
   final int numNonZeros;
   final int numVectors;
   final int numClusters;
-  final int loop = Integer.MAX_VALUE;
+  static final int LOOP = Integer.MAX_VALUE;
   final int opsPerUnit;
   final long maxTimeUsec;
   final long leadTimeUsec;
@@ -248,7 +248,7 @@ public class VectorBenchmarks {
 
   public void incrementalCreateBenchmark() {
     TimingStatistics stats = new TimingStatistics();
-    for (int i = 0; i < loop; i++) {
+    for (int i = 0; i < LOOP; i++) {
       vectors[0][vIndex(i)] = new DenseVector(cardinality);
       if (buildVectorIncrementally(stats, vIndex(i), vectors[0][vIndex(i)], false)) {
         break;
@@ -257,7 +257,7 @@ public class VectorBenchmarks {
     printStats(stats, CREATE_INCREMENTALLY, DENSE_VECTOR);
 
     stats = new TimingStatistics();
-    for (int i = 0; i < loop; i++) {
+    for (int i = 0; i < LOOP; i++) {
       vectors[1][vIndex(i)] = new RandomAccessSparseVector(cardinality);
       if (buildVectorIncrementally(stats, vIndex(i), vectors[1][vIndex(i)], false)) {
         break;
@@ -266,7 +266,7 @@ public class VectorBenchmarks {
     printStats(stats, CREATE_INCREMENTALLY, RAND_SPARSE_VECTOR);
 
     stats = new TimingStatistics();
-    for (int i = 0; i < loop; i++) {
+    for (int i = 0; i < LOOP; i++) {
       vectors[2][vIndex(i)] = new SequentialAccessSparseVector(cardinality);
       if (buildVectorIncrementally(stats, vIndex(i), vectors[2][vIndex(i)], false)) {
         break;
@@ -276,7 +276,7 @@ public class VectorBenchmarks {
 
     if (numClusters > 0) {
       stats = new TimingStatistics();
-      for (int i = 0; i < loop; i++) {
+      for (int i = 0; i < LOOP; i++) {
         clusters[cIndex(i)] = new RandomAccessSparseVector(cardinality);
         if (buildVectorIncrementally(stats, vIndex(i), clusters[cIndex(i)], false)) {
           break;

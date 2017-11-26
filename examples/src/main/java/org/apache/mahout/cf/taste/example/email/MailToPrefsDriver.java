@@ -165,7 +165,7 @@ public final class MailToPrefsDriver extends AbstractJob {
     if (shouldRunNextPhase(parsedArgs, currentPhase) && fromChunks != null && msgIdChunks != null) {
       //Job map
       //may be a way to do this so that we can load the from ids in memory, if they are small enough so that
-      // we don't need the double loop
+      // we don't need the double LOOP
       log.info("Creating recommendation matrix");
       Path vecPath = new Path(output, "recInput");
       if (overwrite) {

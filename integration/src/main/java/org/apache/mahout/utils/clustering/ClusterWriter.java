@@ -30,7 +30,7 @@ public interface ClusterWriter extends Closeable {
   /**
    * Write all values in the Iterable to the output
    *
-   * @param iterable The {@link Iterable} to loop over
+   * @param iterable The {@link Iterable} to LOOP over
    * @return the number of docs written
    * @throws java.io.IOException if there was a problem writing
    */
@@ -44,7 +44,7 @@ public interface ClusterWriter extends Closeable {
   /**
    * Write the first {@code maxDocs} to the output.
    *
-   * @param iterable The {@link Iterable} to loop over
+   * @param iterable The {@link Iterable} to LOOP over
    * @param maxDocs  the maximum number of docs to write
    * @return The number of docs written
    * @throws IOException if there was a problem writing
